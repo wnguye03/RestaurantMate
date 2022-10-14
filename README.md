@@ -26,9 +26,6 @@ Restaurent Side
 - As a user I want to be able to create and remove orders from the current queue of food
 - As a user I want to be able to know what orders need to be prioritize and which one to do later
 - As a user I want to be able to quickly modify the menu if an the menu item is out of stock
-- As a user I want to know when food is being cooked and how long the preparation time has been 
-
-Customer Side
 - As a user I want to be able to order food
 - As a user I want to be able to know the status of my order and for the application to notify me when the food is ready
 - As a user I want to know how much my bill is for the food I ordered
