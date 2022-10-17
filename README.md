@@ -22,10 +22,10 @@ The reasoning for this project stems from my experience working in the restauran
 
 In the context of a restaurant management application: 
 
-Restaurent Side
-- As a user I want to be able to create and remove orders from the current queue of food
-- As a user I want to be able to know what orders need to be prioritize and which one to do later
-- As a user I want to be able to quickly modify the menu if an the menu item is out of stock
-- As a user I want to be able to order food
-- As a user I want to be able to know the status of my order and for the application to notify me when the food is ready
+Restaurant 
+- As a user I want to be able to create and remove orders from the current queue of orders for my restaurant
+- As a user I want to be able to customize my menu
+- As a user I want to be able to prioritize certain orders
+- As a user I want to be able to modify my orders (items ordered and allergies)
+- As a user I want to be able to know when the food is ready
 - As a user I want to know how much my bill is for the food I ordered
