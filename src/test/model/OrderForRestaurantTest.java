@@ -38,6 +38,12 @@ public class OrderForRestaurantTest {
     }
 
     @Test
+    void setCustomerNameTest() {
+        jeff.setCustomerName("mike");
+        assertEquals("mike", jeff.getCustomerName());
+    }
+
+    @Test
     void getTotalPriceTest() {
         assertEquals(2, jeff.getListOfFoodOrdered().size());
         assertEquals(60,jeff.getTotalPrice());

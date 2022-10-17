@@ -55,10 +55,22 @@ class RestaurentTest {
     }
 
     @Test
+    void setRestaurantNameTest() {
+        bobFoodStand.setRestaurantName("mike's food stand");
+        assertEquals("mike's food stand", bobFoodStand.getRestaurantName());
+    }
+
+    @Test
+    void setCuisineTypeTest() {
+        bobFoodStand.setCuisine("canadian");
+        assertEquals("canadian", bobFoodStand.getCuisine());
+    }
+
+    @Test
     void addOrderNotAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 18 name of customer: Jeff allergy [Fried Chicken, Burger] " +
+        assertEquals("order ID: 24 name of customer: Jeff allergy [Fried Chicken, Burger] " +
                 "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
     }
 
@@ -66,7 +78,7 @@ class RestaurentTest {
     void addOrderAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 24 name of customer: Jeff allergy [Fried Chicken, Burger] " +
+        assertEquals("order ID: 30 name of customer: Jeff allergy [Fried Chicken, Burger] " +
                 "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(false, bobFoodStand.addOrder(jeff));
@@ -76,7 +88,7 @@ class RestaurentTest {
     void getSingleOrderWithOrderInQueueTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 12 name of customer: Jeff allergy [Fried Chicken, Burger] " +
+        assertEquals("order ID: 15 name of customer: Jeff allergy [Fried Chicken, Burger] " +
                 "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
     }
 
@@ -102,12 +114,12 @@ class RestaurentTest {
     void removeOrderNotAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 21 name of customer: Jeff allergy [Fried Chicken, Burger] " +
+        assertEquals("order ID: 27 name of customer: Jeff allergy [Fried Chicken, Burger] " +
                 "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(false, bobFoodStand.removeOrder(2));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 21 name of customer: Jeff allergy [Fried Chicken, Burger] allergy [Dairy] "
+        assertEquals("order ID: 27 name of customer: Jeff allergy [Fried Chicken, Burger] allergy [Dairy] "
                 + "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
     }
 
@@ -126,21 +138,21 @@ class RestaurentTest {
     void prioritizeOrderTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 9 name of customer: Jeff allergy [Fried Chicken, Burger] " +
+        assertEquals("order ID: 12 name of customer: Jeff allergy [Fried Chicken, Burger] " +
                 "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(true, bobFoodStand.addOrder(mike));
         assertEquals(2, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 10 name of customer: Mike allergy [Fried Chicken, Burger] allergy [Dairy] "
+        assertEquals("order ID: 13 name of customer: Mike allergy [Fried Chicken, Burger] allergy [Dairy] "
                 + "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(1));
 
         assertTrue(bobFoodStand.prioritizeOrder(mike));
 
-        assertEquals("order ID: 10 name of customer: Mike allergy [Fried Chicken, Burger] allergy [Dairy] "
+        assertEquals("order ID: 13 name of customer: Mike allergy [Fried Chicken, Burger] allergy [Dairy] "
                 + "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
 
         assertTrue(bobFoodStand.prioritizeOrder(sam));
-        assertEquals("order ID: 11 name of customer: Sam allergy [Fried Chicken, Burger] allergy [Dairy] " +
+        assertEquals("order ID: 14 name of customer: Sam allergy [Fried Chicken, Burger] allergy [Dairy] " +
                 "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
 
     }

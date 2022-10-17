@@ -3,8 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MenuItemTest {
     private MenuItem friedChicken;
@@ -16,7 +15,7 @@ public class MenuItemTest {
 
     @Test
     void testConstructor() {
-        assertEquals(1, friedChicken.getFoodItemID());
+        assertEquals(6, friedChicken.getFoodItemID());
         assertEquals("Fried Chicken", friedChicken.getNameOfDish());
         assertEquals(40, friedChicken.getPriceOfItem());
         assertTrue(friedChicken.isAvailability());
@@ -29,4 +28,35 @@ public class MenuItemTest {
         assertEquals("food item ID: 0 name of dish: Fried Chicken is available: true allergy: " +
                 "Peanut price: 40 time to make: 10", friedChicken.printFoodItem());
     }
+
+    @Test
+    void setNameOfDishTest() {
+        friedChicken.setNameOfDish("Fried Meat");
+        assertEquals("Fried Meat", friedChicken.getNameOfDish());
+    }
+
+    @Test
+    void setPriceOfDishTest() {
+        friedChicken.setPriceOfItem(100);
+        assertEquals(100, friedChicken.getPriceOfItem());
+    }
+
+    @Test
+    void setAvailabilityTest() {
+        friedChicken.setAvailability(false);
+        assertFalse(friedChicken.isAvailability());
+    }
+
+    @Test
+    void setAllergyTest() {
+        friedChicken.setAllergy("tomato");
+        assertEquals("tomato", friedChicken.getAllergy());
+    }
+
+    @Test
+    void setTimeToMake() {
+        friedChicken.setTimeToMake(100);
+        assertEquals(100, friedChicken.getTimeToMake());
+    }
+
 }
