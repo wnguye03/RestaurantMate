@@ -15,7 +15,7 @@ public class MenuItemTest {
 
     @Test
     void testConstructor() {
-        assertEquals(6, friedChicken.getFoodItemID());
+        assertEquals(7, friedChicken.getFoodItemID());
         assertEquals("Fried Chicken", friedChicken.getNameOfDish());
         assertEquals(40, friedChicken.getPriceOfItem());
         assertTrue(friedChicken.isAvailability());
@@ -57,6 +57,11 @@ public class MenuItemTest {
     void setTimeToMake() {
         friedChicken.setTimeToMake(100);
         assertEquals(100, friedChicken.getTimeToMake());
+    }
+
+    @Test
+    void toStringTest () {
+        assertEquals("Fried Chicken", friedChicken.toString());
     }
 
 }

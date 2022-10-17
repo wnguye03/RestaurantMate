@@ -29,7 +29,7 @@ public class OrderForRestaurantTest {
 
     @Test
     void constructorTest() {
-        assertEquals(0, jeff.getCustomerID());
+        assertEquals(33, jeff.getCustomerID());
         assertEquals("Jeff", jeff.getCustomerName());
         assertEquals(2, jeff.getListOfFoodOrdered().size());
         assertEquals(friedChicken, jeff.getListOfFoodOrdered().get(0));
