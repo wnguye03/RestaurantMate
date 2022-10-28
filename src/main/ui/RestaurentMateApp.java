@@ -222,6 +222,10 @@ public class RestaurentMateApp {
             printMenu();
         } else if (commands.equals("e")) {
             displayPointOfSaleHomePage();
+        } else if (commands.equals("s")) {
+            saveMenu();
+        } else if (commands.equals("l")) {
+            loadMenu();
         } else {
             System.out.println("Invalid Section, select one of the above options");
         }
@@ -232,7 +236,25 @@ public class RestaurentMateApp {
         System.out.println("\nChoose from:");
         System.out.println("\tc -> clear menu");
         System.out.println("\tp -> print menu");
+        System.out.println("\ts -> save menu");
+        System.out.println("\tl -> load menu");
         System.out.println("\te -> esc");
+    }
+
+    // EFFECTS: saves all menu items in the restaurant's menu to the restaurant's json file has an effect of all saving
+    //          everything else from the restaurant
+    private void saveMenu() {
+        restaurent.handleSaveRestaurant();
+        System.out.println("restaurant menu saved!");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads all menu items from the JSON file into the restaurant's menu has an effect of all saving
+    //          everything else from the restaurant
+    private void loadMenu() {
+
+        restaurent = restaurent.handleReadRestaurant(restaurent);
+        System.out.println("restaurant info loaded!");
     }
 
     // MODIFIES: this
@@ -410,9 +432,14 @@ public class RestaurentMateApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command for restaurant application
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void processCommandsForRestaurant(String commands) {
         if (commands.equals("sn")) {
             setName();
+        } else if (commands.equals("sr")) {
+            saveRestaurant();
+        } else if (commands.equals("lo")) {
+            loadRestaurant();
         } else if (commands.equals("sc")) {
             setCuisine();
         } else if (commands.equals("fo")) {
@@ -437,6 +464,8 @@ public class RestaurentMateApp {
     //EFFECTS: displays restaurant application homepage options for users
     private void displayRestaurantHomePage() {
         System.out.println("\nChoose from:");
+        System.out.println("\tsr ->  save restaurant info");
+        System.out.println("\tlo ->  load restaurant info");
         System.out.println("\tsn ->  set restaurant name");
         System.out.println("\tsc ->  set cuisine");
         System.out.println("\tfo ->  finish order");
@@ -446,6 +475,19 @@ public class RestaurentMateApp {
         System.out.println("\tpri -> print specific order");
         System.out.println("\tmo ->  modify existing order");
         System.out.println("\te -> esc");
+    }
+
+    // EFFECTS: saves all the restaurant information to the destination JSON file
+    private void saveRestaurant() {
+        restaurent.handleSaveRestaurant();
+        System.out.println("restaurant info saved!");
+    }
+
+    // MODIFIES: THIS
+    // EFFECTS: loads the restaurant information from the JSON file back into the current restaurant
+    private void loadRestaurant() {
+        restaurent = restaurent.handleReadRestaurant(restaurent);
+        System.out.println("restaurant info loaded!");
     }
 
     // REQUIRES: name must be at least 1 in length
@@ -460,12 +502,14 @@ public class RestaurentMateApp {
         if (input.equals("0")) {
             runRestaurantInteraction();
         } else {
+            System.out.println(restaurent.getRestaurantName());
             System.out.println("type out name you would like the restaurant to be set to");
             String newName = in.nextLine();
             restaurent.setRestaurantName(newName);
             System.out.println("new restaurant name is " + restaurent.getRestaurantName());
         }
     }
+
 
     // REQUIRES: cuisine must be at least 1 in length
     // MODIFIES: this
@@ -479,6 +523,7 @@ public class RestaurentMateApp {
         if (input.equals("0")) {
             runRestaurantInteraction();
         } else {
+            System.out.println(restaurent.getCuisine());
             System.out.println("type out cuisine you would like the restaurant to be set to");
             String newCuisine = in.nextLine();
             restaurent.setCuisine(newCuisine);

@@ -1,0 +1,1 @@
+{"restaurantName":"Loaf","cuisine":"cafe","orders":[{"price":10,"customer allergy":["Dairy"],"name":"Joe","id":0,"food ordered":[{"timeToMake":5,"nameOfDish":"sandwich","foodItemID":0,"allergy":"gluten","availability":true,"priceOfItem":10}]}],"menu":[{"name":"sandwich","avaliability":true,"allergy":"gluten","time to make":5,"id":0,"priceOfItem":10}]}

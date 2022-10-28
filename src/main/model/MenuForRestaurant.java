@@ -1,9 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 // represents the menu for a given restaurant
-public class MenuForRestaurant {
+public class MenuForRestaurant implements Writable {
+
     private final ArrayList<MenuItem> menu;   //menu for a restaurant
 
     /*
@@ -11,6 +17,13 @@ public class MenuForRestaurant {
      */
     public MenuForRestaurant() {
         this.menu = new ArrayList<MenuItem>();
+    }
+
+    /*
+     * EFFECTS: gets the array of menu items
+     */
+    public ArrayList<MenuItem> getMenu() {
+        return menu;
     }
 
     /*
@@ -80,4 +93,17 @@ public class MenuForRestaurant {
         return menu.size();
     }
 
+    @Override
+    public JSONObject toJsonObj() {
+        return null;
+    }
+
+    @Override
+    public JSONArray toJsonArray() {
+        JSONArray jsonArray = new JSONArray();
+        for (MenuItem menuItem: menu) {
+            jsonArray.put(menuItem.toJsonObj());
+        }
+        return jsonArray;
+    }
 }

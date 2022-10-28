@@ -2,18 +2,31 @@ package model;
 
 //The class represents an restaurant having a name, cuisine type, and a list of current orders
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.*;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Restaurent {
+public class Restaurent implements Writable {
     private String restaurantName;
     private String cuisine;
-    private final ArrayList<OrderForRestaurant> currentOrders;
-    private final MenuForRestaurant menu;
+    private ArrayList<OrderForRestaurant> currentOrders;
+    private MenuForRestaurant menu;
+    private JsonWriter restaurantWriter;
+    private JsonReader restaurantReader;
+    private static final String RESTAURANT_STORE = "./data/restaurant.json";
+
+//    private JsonWriter orderWriter;
 
     /*
      * REQUIRES: restaurantName and cuisine has a non-zero length, OrderForRestaurant's length is greater than 0,
      * EFFECTS: the restaurant's name is set to restaurantName; the restaurant's cuisine is set to cuisine
      *          the restaurant's current order is set to OrderForRestaurant, the restaurant's menu is set to menu
+     *          the restaurant Json writer location is set to restaurantWriter the restaurant's reader location is set
+     *          to restaurantReader
      */
     public Restaurent(String restaurantName, String cuisine, ArrayList<OrderForRestaurant> currentOrders,
                       MenuForRestaurant menu) {
@@ -21,6 +34,8 @@ public class Restaurent {
         this.cuisine = cuisine;
         this.currentOrders = currentOrders;
         this.menu = menu;
+        restaurantWriter = new JsonWriter("./data/restaurant.json");
+        restaurantReader = new JsonReader(RESTAURANT_STORE);
     }
 
     public MenuForRestaurant getMenu() {
@@ -119,5 +134,52 @@ public class Restaurent {
             currentOrders.add(0, order);
             return true;
         }
+    }
+
+    // EFFECTS: saves the current restaurant information to a JSON file
+    public void handleSaveRestaurant() {
+        try {
+            restaurantWriter.open();
+            restaurantWriter.write(this);
+            restaurantWriter.close();
+            System.out.println("save successful!!!");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: updates the current restaurant with the saved restaurant's specification and memory
+    public Restaurent handleReadRestaurant(Restaurent restaurent) {
+        try {
+            return (Restaurent) restaurantReader.read();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public JSONObject toJsonObj() {
+        JSONObject jo = new JSONObject();
+        jo.put("restaurantName", restaurantName);
+        jo.put("cuisine", cuisine);
+        jo.put("orders", convertOrdersToJsonObj());
+        jo.put("menu", menu.toJsonArray());
+
+        return jo;
+    }
+
+    @Override
+    public JSONArray toJsonArray() {
+        return null;
+    }
+
+    // EFFECTS: converts the current list of restaurant orders to an Json array
+    public JSONArray convertOrdersToJsonObj() {
+        JSONArray jsonArray = new JSONArray();
+        for (OrderForRestaurant order: currentOrders) {
+            jsonArray.put(order.toJsonObj());
+        }
+        return jsonArray;
     }
 }

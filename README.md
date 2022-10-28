@@ -30,11 +30,13 @@ Restaurant
 - As a user I want to be able to know when the food is ready
 - As a user I want to know how much my bill is for the food I ordered
 - As a user I want to save the state of my restaurant
+  - name
+  - cuisine
   - Menu
-  - Restaurant details (name, cuisine)
   - Order queue 
 - As a user I want to load my restaurant from file and continue using my restaurant with my saved data
+  - name
+  - cuisine
   - Menu
-  - Restaurant details (name, cuisine)
   - Order queue 
 

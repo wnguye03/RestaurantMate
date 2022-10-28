@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 //repersents a food item having a item number id, name of dish, price, availability (boolean)
 // associated allergy, time to make
-public class MenuItem {
+public class MenuItem implements Writable {
     private static int nextFoodItemID = 0; //used to track the id of the next food item
     private final int foodItemID;         // food item id
     private String nameOfDish;      // the name of the dish
@@ -85,5 +89,22 @@ public class MenuItem {
     @Override
     public String toString() {
         return getNameOfDish();
+    }
+
+    @Override
+    public JSONObject toJsonObj() {
+        JSONObject menuItemJson = new JSONObject();
+        menuItemJson.put("id", foodItemID);
+        menuItemJson.put("name", nameOfDish);
+        menuItemJson.put("avaliability", availability);
+        menuItemJson.put("allergy", allergy);
+        menuItemJson.put("priceOfItem", priceOfItem);
+        menuItemJson.put("time to make", timeToMake);
+        return menuItemJson;
+    }
+
+    @Override
+    public JSONArray toJsonArray() {
+        return null;
     }
 }

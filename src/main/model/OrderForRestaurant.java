@@ -2,10 +2,14 @@ package model;
 
 //The class represents an order having an id, name of customer, an array of menu items ordered, the price, and allergy
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class OrderForRestaurant {
+public class OrderForRestaurant implements Writable {
     private static int nextOrderID = 0;             // used to track the id of the next account
     private final int customerID;                         // order ID used internally by restaurant to track order
     private String customerName;                    // name of customer ordering
@@ -121,6 +125,23 @@ public class OrderForRestaurant {
         }
         return totalTime;
     }
+
+    @Override
+    public JSONObject toJsonObj() {
+        JSONObject restaurantOrders = new JSONObject();
+        restaurantOrders.put("id", customerID);
+        restaurantOrders.put("name", customerName);
+        restaurantOrders.put("price", getTotalPrice());
+        restaurantOrders.put("food ordered", listOfFoodOrdered);
+        restaurantOrders.put("customer allergy", customerAllergies);
+        return restaurantOrders;
+    }
+
+    @Override
+    public JSONArray toJsonArray() {
+        return null;
+    }
+
 
 }
 

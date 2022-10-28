@@ -1,0 +1,82 @@
+{
+  "restaurantName": "UBC Club",
+  "cuisine": "contemporary",
+  "orders": [
+    {
+      "price": 30,
+      "customer allergy": [
+        "Peannut"
+      ],
+      "name": "Mike",
+      "id": 0,
+      "food ordered": [
+        {
+          "timeToMake": 15,
+          "nameOfDish": "Rice",
+          "foodItemID": 2,
+          "allergy": "nothing",
+          "availability": true,
+          "priceOfItem": 10
+        },
+        {
+          "timeToMake": 15,
+          "nameOfDish": "Burger",
+          "foodItemID": 1,
+          "allergy": "Dairy",
+          "availability": true,
+          "priceOfItem": 20
+        }
+      ]
+    },
+    {
+      "price": 50,
+      "customer allergy": [],
+      "name": "Bob",
+      "id": 1,
+      "food ordered": [
+        {
+          "timeToMake": 10,
+          "nameOfDish": "Fried Chicken",
+          "foodItemID": 0,
+          "allergy": "Peanut",
+          "availability": true,
+          "priceOfItem": 40
+        },
+        {
+          "timeToMake": 15,
+          "nameOfDish": "Rice",
+          "foodItemID": 2,
+          "allergy": "nothing",
+          "availability": true,
+          "priceOfItem": 10
+        }
+      ]
+    }
+  ],
+  "menu": [
+    {
+      "name": "Fried Chicken",
+      "avaliability": true,
+      "allergy": "Peanut",
+      "time to make": 10,
+      "id": 0,
+      "priceOfItem": 40
+    },
+    {
+      "name": "Burger",
+      "avaliability": true,
+      "allergy": "Dairy",
+      "time to make": 15,
+      "id": 1,
+      "priceOfItem": 20
+    },
+    {
+      "name": "Rice",
+      "avaliability": true,
+      "allergy": "nothing",
+      "time to make": 15,
+      "id": 2,
+      "priceOfItem": 10
+    }
+  ]
+}
