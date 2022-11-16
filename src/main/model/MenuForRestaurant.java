@@ -73,7 +73,8 @@ public class MenuForRestaurant implements Writable {
     public String getAllMenuItems() {
         String menuStringForm = "";
         for (MenuItem item: menu) {
-            menuStringForm = menuStringForm + item.getNameOfDish() + " " + item.getPriceOfItem() + " ";
+            menuStringForm = menuStringForm + "Name " + item.getNameOfDish()
+                    + " Price " + item.getPriceOfItem() + " " + "\n" + "\n";
         }
         return menuStringForm;
     }

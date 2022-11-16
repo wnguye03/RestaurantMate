@@ -65,8 +65,8 @@ public class Restaurent implements Writable {
         ArrayList<String> allOrders = new ArrayList<>();
         for (OrderForRestaurant order: currentOrders) {
             allOrders.add("order ID: " + order.getCustomerID() + " name of customer: " + order.getCustomerName()
-                    + " allergy " + order.getListOfFoodOrdered() + " allergy " + order.getCustomerAllergies()
-                    + " time to make " + order.getTotalTime() + " price: " + order.getTotalPrice());
+                    + " Food Ordered " + order.getListOfFoodOrdered() + " allergy " + order.getCustomerAllergies()
+                    + " time to make " + order.getTotalTime() + " price: " + order.getTotalPrice() + "\n");
         }
         return allOrders;
     }
@@ -142,7 +142,6 @@ public class Restaurent implements Writable {
             restaurantWriter.open();
             restaurantWriter.write(this);
             restaurantWriter.close();
-            System.out.println("save successful!!!");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
