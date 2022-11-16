@@ -40,5 +40,10 @@ Restaurant
   - Menu
   - Order queue 
 
-
+# Instructions For Grader 
+- To add a new order to the restaurant simply click the new order button and then click the add order button and follow the instructions of the pop-up panel to add a new order to the restaurant's list of orders
+- To add additional menu items to the menu simply click the menu items button at the bottom of the screen and then click add food items then fill in the corresponding pop-up panel to generate a new menu item
+- The visual component when first entering the application as it is the background image, the image itself is the logo of my application
+- You can save the restaurant by clicking the save button at the top of the screen
+- You can load the restaurant by clicking the load button at the top of the screen
 

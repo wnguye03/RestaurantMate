@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 ///**
-// * Represents application's main window frame.
+// * Represents the restaurant mate application's main window frame that houses all functionality and all sub-frames
 // */
 public class RestaurantMateGUI extends JFrame implements ActionListener {
     private static final int WIDTH = 2000;
@@ -58,18 +58,18 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     private MenuForRestaurant menu = new MenuForRestaurant();
 
     /*
-     * EFFECTS: RestaurantMateUI empty constructor
+     * MODIFIES: this
+     * EFFECTS: creates the starting home screen and initializes a dummy restaurant
      */
     public RestaurantMateGUI() {
         restaurent = new Restaurent("Loaf",  "Cafe", new ArrayList<OrderForRestaurant>(), menu);
-//        this.restaurent = restaurent;
-//        this.frame = frame;
         initGui();
         initHome();
     }
 
     /*
-     * EFFECTS: creates the gui
+     * MODIFIES: this
+     * EFFECTS: initializes a new GUI frame
      */
     public void initGui() {
         frame = new JFrame();
@@ -81,6 +81,10 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
 
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: init the components of the home screen
+     */
     public void initHome() {
         addButtons();
         addTopBar();
@@ -88,7 +92,8 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     }
 
     /*
-     * EFFECTS: add the menu bar at the top of the screen
+     * MODIFIES: this
+     * EFFECTS: init the top bar of the home screen: save button, load button, quit to home button
      */
     private void addTopBar() {
         JPanel mb = new JPanel();
@@ -110,7 +115,8 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     }
 
     /*
-     * EFFECTS: add the buttons at the bottom of the screen
+     * MODIFIES: this
+     * EFFECTS: inits the bottom bar of the home screen: menu, menu items, order, and restaurant buttons
      */
     private void addButtons() {
         Panel panel = new Panel();
@@ -135,7 +141,8 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     }
 
     /*
-     * EFFECTS: add load in image
+     * MODIFIES: this
+     * EFFECTS: creates the main load in image for the home page
      */
     private void addCenterImage() {
         BufferedImage myPicture = null;
@@ -189,24 +196,40 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         }
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * EFFECTS: creates a pop-up to rename the restaurant
+     */
     private void setNamePopUp() {
         String name = JOptionPane.showInputDialog(frame,
-                "Set Restaurant Name", null);
+                "Set Restaurant Name (should be a word or phrase)", null);
         this.restaurent.setRestaurantName(name);
         restaurent.handleSaveRestaurant();
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * EFFECTS: creates a pop-up to choose the restaurant's cuisine
+     */
     private void setCuisinePopUp() {
         String cusine = JOptionPane.showInputDialog(frame,
-                "Set Restaurant Cuisine", null);
+                "Set Restaurant Cuisine (should be a word or phrase)", null);
         this.restaurent.setCuisine(cusine);
         restaurent.handleSaveRestaurant();
     }
 
+    /*
+     * EFFECTS: helper method to generate a pop-up to get the customer's Id
+     */
     private String popUp() {
-        return JOptionPane.showInputDialog(frame, "Enter Order Id", null);
+        return JOptionPane.showInputDialog(frame, "Enter Order Id (should be a number)", null);
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: order id has to exist in the order list
+     * EFFECTS: creates a pop-up to choose order that is finished in the order list
+     */
     private void finishOrderPopUp() {
         String id = popUp();
         OrderForRestaurant orderToFinish = this.restaurent.getSingleOrder(Integer.parseInt(id));
@@ -215,6 +238,11 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         displayOrder();
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: order id has to exist in the order list
+     * EFFECTS: creates a pop-up to choose order that is to be prioritized in the order list
+     */
     private void prioritizeOrderPopUp() {
         String id = popUp();
         OrderForRestaurant orderToPrioritize = this.restaurent.getSingleOrder(Integer.parseInt(id));
@@ -223,6 +251,11 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         displayOrder();
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: order id has to exist in the order list
+     * EFFECTS: creates a pop-up to choose order that is to be removed in the order list
+     */
     private void removeOrderPopUp() {
         String id = popUp();
         this.restaurent.removeOrder(Integer.parseInt(id));
@@ -230,44 +263,62 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         displayOrder();
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: order id has to exist in the order list
+     * EFFECTS: creates a pop-up to choose order that is to be modified with four options: add and remove food items
+     *          and add and remove allergies
+     */
     private void modifyOrderPopUp() {
         String id = popUp();
-        String typeOfMod = JOptionPane.showInputDialog(frame,
-                "Enter 1 to add food item, Enter 2 to remove food item, Enter 3 to add allergy, enter 4 to "
-                        + "remove allergy",
-                null);
+        String typeOfMod = setUpforModifyOrder();
         if (typeOfMod.equals("1")) {
-            String item = JOptionPane.showInputDialog(frame, "Enter name of food item to add",
-                    null);
+            String item = JOptionPane.showInputDialog(frame, "Enter name of food item to add"
+                            + "(should be a word or phrase)", null);
             MenuItem itemAdd = this.restaurent.getMenu().getFoodItem(item);
             this.restaurent.getSingleOrder(Integer.parseInt(id)).addItemToOrder(itemAdd);
         } else if (typeOfMod.equals("2")) {
-            String item = JOptionPane.showInputDialog(frame, "Enter name of food item to remove",
-                    null);
+            String item = JOptionPane.showInputDialog(frame, "Enter name of food item to remove"
+                            + "(should be a word or phrase)", null);
             this.restaurent.getSingleOrder(Integer.parseInt(id)).removeItemToOrder(item);
         } else if (typeOfMod.equals("3")) {
-            String allergy = JOptionPane.showInputDialog(frame, "Enter Allergy to Add",
-                    null);
+            String allergy = JOptionPane.showInputDialog(frame, "Enter Allergy to Add"
+                            + "(should be a word or phrase)", null);
             this.restaurent.getSingleOrder(Integer.parseInt(id)).addAllergy(allergy);
         } else if (typeOfMod.equals("4")) {
-            String allergy = JOptionPane.showInputDialog(frame, "Enter Allergy to Remove",
-                    null);
+            String allergy = JOptionPane.showInputDialog(frame, "Enter Allergy to Remove"
+                    + "(should be a word or phrase)", null);
             this.restaurent.getSingleOrder(Integer.parseInt(id)).removeAllergy(allergy);
-        } else {
-            modifyOrderPopUp();
         }
         restaurent.handleSaveRestaurant();
         displayOrder();
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: helper method for modify order creating a pop-up to allow users to choose
+     *          which functionality of modification to run
+     */
+    private String setUpforModifyOrder() {
+        return JOptionPane.showInputDialog(frame,
+                "Enter 1 to add food item, Enter 2 to remove food item, Enter 3 to add allergy, enter 4 to "
+                        + "remove allergy",
+                null);
+    }
 
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: exits the current page and load in the homepage
+     */
     private void quitPopUpPanel() {
         new RestaurantMateGUI();
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    /*
+     * MODIFIES: this
+     * EFFECTS: sets up the restaurant's gui with associated buttons and jtext area
+     */
     private void openRestaurantPanel() {
         initGui();
         addTopBar();
@@ -281,6 +332,24 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
 
         JPanel panel = new JPanel();
 
+        restaurentSetUp();
+
+        panel.add(setNameRestaurantBtn);
+        panel.add(setCuisineRestaurantBtn);
+        panel.add(finishOrderRestaurantBtn);
+        panel.add(prioritizeOrderRestaurantBtn);
+        panel.add(removeOrderRestaurantBtn);
+        panel.add(modifyOrderRestaurantBtn);
+
+        frame.getContentPane().add(panel, BorderLayout.SOUTH);
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: helper method for the restaurant's gui creating all the buttons att the bottom of the screen:
+     *          setting the name and cuisine and, finishing, prioritizing, removing, and modifying order
+     */
+    private void restaurentSetUp() {
         setNameRestaurantBtn = new JButton("Set Restaurant Name");
         setNameRestaurantBtn.addActionListener(this);
 
@@ -299,19 +368,12 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         modifyOrderRestaurantBtn = new JButton("Modify Order");
         modifyOrderRestaurantBtn.addActionListener(this);
 
-        panel.add(setNameRestaurantBtn);
-        panel.add(setCuisineRestaurantBtn);
-        panel.add(finishOrderRestaurantBtn);
-        panel.add(prioritizeOrderRestaurantBtn);
-        panel.add(removeOrderRestaurantBtn);
-        panel.add(modifyOrderRestaurantBtn);
-
-
-
-        frame.getContentPane().add(panel, BorderLayout.SOUTH);
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    /*
+     * MODIFIES: this
+     * EFFECTS: sets up the orders' gui with associated buttons and jtext area
+     */
     private void openOrderPanel() {
         initGui();
         addTopBar();
@@ -323,26 +385,38 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         frame.getContentPane().add(mainJta);
         displayOrder();
 
-
         JPanel panel = new JPanel();
 
         addOrderBtn = new JButton("Add Order");
         addOrderBtn.addActionListener(this);
 
-
         panel.add(addOrderBtn);
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: menu items that are added must be valid menu items, meaning instantiated items that have been added to
+     *           the menu object
+     * EFFECTS: creates a pop-up to create a new order for a customer
+     */
     private void addOrder() {
-        String name = (String)JOptionPane.showInputDialog(frame, "Enter customer name", null);
+        String name = (String)JOptionPane.showInputDialog(frame,
+                "Enter customer name (should be a word or phrase)", null);
+        ArrayList<MenuItem> items = addMenuItem();
+        ArrayList<String> allergies = addAllergies();
+        this.restaurent.addOrder(new OrderForRestaurant(name, items, allergies));
+        displayOrder();
+        restaurent.handleSaveRestaurant();
+    }
+
+    private ArrayList<MenuItem> addMenuItem() {
         ArrayList<MenuItem> items = new ArrayList<>();
-        ArrayList<String> allergies = new ArrayList<>();
         Boolean check = true;
         while (check) {
             String item = JOptionPane.showInputDialog(frame,
-                    "Name of menu item to be added and type done when finished adding", null);
+                    "Name of menu item to be added and type done when finished adding "
+                            + "(should be a word or phrase)", null);
             if (item.equals("done")) {
                 check = false;
             } else {
@@ -350,21 +424,23 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
                 items.add(itemToAdd);
             }
         }
+        return items;
+    }
 
-        Boolean check2 = true;
-        while (check2) {
+    private ArrayList<String> addAllergies() {
+        ArrayList<String> allergies = new ArrayList<>();
+        Boolean check = true;
+        while (check) {
             String item = JOptionPane.showInputDialog(frame,
-                    "Name of allergy to be added and type done when finished adding", null);
+                    "Name of allergy to be added and type done when finished adding"
+                            + "(should be a word or phrase)", null);
             if (item.equals("done")) {
-                check2 = false;
+                check = false;
             } else {
                 allergies.add(item);
             }
-
-            this.restaurent.addOrder(new OrderForRestaurant(name, items, allergies));
         }
-        displayOrder();
-        restaurent.handleSaveRestaurant();
+        return allergies;
     }
 
     private void displayOrder() {
@@ -408,34 +484,15 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
      * EFFECTS: add the add food item panel
      */
     private void addFoodItemPanel() {
-//        JSplitPane splitPane = new JSplitPane();
-//        JSplitPane splitPane1 = new JSplitPane();
-//        JPanel panel3 = new JPanel();
         JPanel panel2 = new JPanel();
 
         addDish = new JButton("Add Food Item");
         addDish.addActionListener(this);
         panel2.add(addDish);
 
-//
-//        JTextField name = new JTextField("enter name of dish here");
-//        JTextField price = new JTextField("enter price of dish here");
-//        JTextField allergy = new JTextField("enter allergy of dish here");
-//        JTextField timeToMake = new JTextField("enter time to make dish here");
-//        panel3.add(name, BorderLayout.CENTER);
-//        panel3.add(price, BorderLayout.CENTER);
-//        panel3.add(allergy, BorderLayout.CENTER);
-//        panel3.add(timeToMake, BorderLayout.CENTER);
-//        splitPane.setLeftComponent(panel3);
-//
         deleteDish = new JButton("Delete Food Item");
         deleteDish.addActionListener(this);
         panel2.add(deleteDish);
-//
-//        JTextField id = new JTextField("enter ID of dish here");
-//        splitPane1.setLeftComponent(id);
-//        panel2.add(splitPane, BorderLayout.CENTER);
-//        panel2.add(splitPane1, BorderLayout.SOUTH);
 
         mainJta = new JTextArea();
         mainJta.setPreferredSize(new Dimension(800, 600));
@@ -450,17 +507,19 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     }
 
     private void addNewDish() {
-        String name = (String)JOptionPane.showInputDialog(frame, "Name of Dish", null);
-        String stringPrice = JOptionPane.showInputDialog(frame, "Price of Dish", null);
+        String name = (String)JOptionPane.showInputDialog(frame, "Name of Dish (should be a word or phrase)",
+                null);
+        String stringPrice = JOptionPane.showInputDialog(frame, "Price of Dish (should be a number)",
+                null);
         int price = Integer.parseInt(stringPrice);
-        String allergy = (String)JOptionPane.showInputDialog(frame, "Allergy of Dish", null);
-        String stringTime = (String)JOptionPane.showInputDialog(frame, "Time to Make Dish",
+        String allergy = (String)JOptionPane.showInputDialog(frame, "Allergy of Dish (should be a word or"
+                + "phrase)", null);
+        String stringTime = (String)JOptionPane.showInputDialog(frame, "Time to Make Dish (should be a number)",
                 null);
         int time = Integer.parseInt(stringTime);
         this.restaurent.getMenu().addFoodItem(new MenuItem(name, price, allergy, time));
         restaurent.handleSaveRestaurant();
         displayMenu();;
-
     }
 
     private void displayMenu() {
@@ -469,12 +528,11 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     }
 
     private void deleteMenuDish() {
-        String name = JOptionPane.showInputDialog(frame, "Enter name of item to be deleted",
+        String name = JOptionPane.showInputDialog(frame, "Enter name of item to be deleted"
+                        + "(should be a word or phrase)",
                 null);
         this.restaurent.getMenu().deleteFoodItemFromMenu(name);
         restaurent.handleSaveRestaurant();
         displayMenu();
     }
-
-
 }
