@@ -410,6 +410,11 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         restaurent.handleSaveRestaurant();
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: menu items inputed has to be valid menu items
+     * EFFECTS: creates a pop-up to add a new order to the restaurant's list of orders
+     */
     private ArrayList<MenuItem> addMenuItem() {
         ArrayList<MenuItem> items = new ArrayList<>();
         Boolean check = true;
@@ -427,6 +432,10 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         return items;
     }
 
+    /*
+     * MODIFIES: this, orders
+     * EFFECTS: helper method to add allergies to a given order
+     */
     private ArrayList<String> addAllergies() {
         ArrayList<String> allergies = new ArrayList<>();
         Boolean check = true;
@@ -443,12 +452,20 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         return allergies;
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: display the current list of restaurant's orders
+     */
     private void displayOrder() {
         String order = String.join("\n", this.restaurent.getCurrentOrders());
         mainJta.setText(order);
     }
 
-
+    /*
+     * MODIFIES: this
+     * EFFECTS: initializes the menu gui with all its individual components: top nav bar, text area for menu items, and
+     *          clear menu button
+     */
     private void openMenuPanel() {
         initGui();
         addTopBar();
@@ -466,13 +483,20 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
 
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * EFFECTS: clears the existing restaurant's menu
+     */
     private void clearMenu() {
         this.restaurent.getMenu().clearMenu();
         restaurent.handleSaveRestaurant();
         displayMenu();
     }
 
-
+    /*
+     * MODIFIES: this
+     * EFFECTS: inits the menu item GUI
+     */
     private void openFoodPanel() {
         initGui();
         addTopBar();
@@ -480,7 +504,7 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     }
 
     /*
-     * REQUIRES:
+     * MODIFIES: this
      * EFFECTS: add the add food item panel
      */
     private void addFoodItemPanel() {
@@ -506,6 +530,11 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         frame.getContentPane().add(BorderLayout.SOUTH, panel2);
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: name and allergy has to be of non-zero length
+     * EFFECTS: creates a pop-up to add a new menu item to the menu
+     */
     private void addNewDish() {
         String name = (String)JOptionPane.showInputDialog(frame, "Name of Dish (should be a word or phrase)",
                 null);
@@ -522,11 +551,20 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         displayMenu();;
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: displays the current list of menu items for the restaurant
+     */
     private void displayMenu() {
         String menu = this.restaurent.getMenu().getAllMenuItems();
         mainJta.setText(menu);
     }
 
+    /*
+     * MODIFIES: this, restaurant
+     * REQUIRES: input has to be a valid menu item
+     * EFFECTS: deletes a particular menu item from the menu
+     */
     private void deleteMenuDish() {
         String name = JOptionPane.showInputDialog(frame, "Enter name of item to be deleted"
                         + "(should be a word or phrase)",
