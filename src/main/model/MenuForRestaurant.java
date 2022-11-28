@@ -34,6 +34,8 @@ public class MenuForRestaurant implements Writable {
         if (menu.contains(menuItem)) {
             return false;
         } else {
+            EventLog.getInstance().logEvent(new Event("New menu item " + menuItem.getNameOfDish()
+                    + " has been added"));
             this.menu.add(menuItem);
             return true;
         }
@@ -61,6 +63,7 @@ public class MenuForRestaurant implements Writable {
         if (itemToDelete == null) {
             return false;
         } else {
+            EventLog.getInstance().logEvent(new Event("Menu Item " + foodName + " has been removed"));
             menu.remove(itemToDelete);
             return true;
         }
@@ -84,6 +87,7 @@ public class MenuForRestaurant implements Writable {
      * EFFECTS: clear all items from the menu
      */
     public void clearMenu() {
+        EventLog.getInstance().logEvent(new Event("Menu has been cleared"));
         menu.clear();
     }
 

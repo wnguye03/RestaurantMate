@@ -1,10 +1,9 @@
 package ui;
 
 
-import model.MenuForRestaurant;
+import model.*;
+import model.Event;
 import model.MenuItem;
-import model.OrderForRestaurant;
-import model.Restaurent;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -51,6 +50,7 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
     private JButton save;
     private JButton load;
     private JButton quit;
+    private JButton exitApplication;
 
     private JTextArea idFoodItemJta = new JTextArea();
 
@@ -62,6 +62,7 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
      * EFFECTS: creates the starting home screen and initializes a dummy restaurant
      */
     public RestaurantMateGUI() {
+        EventLog.getInstance().clear();
         restaurent = new Restaurent("Loaf",  "Cafe", new ArrayList<OrderForRestaurant>(), menu);
         initGui();
         initHome();
@@ -86,6 +87,7 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
      * EFFECTS: init the components of the home screen
      */
     public void initHome() {
+        initGui();
         addButtons();
         addTopBar();
         addCenterImage();
@@ -107,9 +109,13 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
         quit = new JButton("Quit to Home");
         quit.addActionListener(this);
 
+        exitApplication = new JButton("Exit Application");
+        exitApplication.addActionListener(this);
+
         mb.add(save);
         mb.add(load);
         mb.add(quit);
+        mb.add(exitApplication);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
 
     }
@@ -193,6 +199,11 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
             modifyOrderPopUp();
         } else if (addOrderBtn.equals(btn)) {
             addOrder();
+        } else if (exitApplication.equals((btn))) {
+            for (Event event: EventLog.getInstance()) {
+                System.out.println(event);
+            }
+            System.exit(0);
         }
     }
 
@@ -312,7 +323,7 @@ public class RestaurantMateGUI extends JFrame implements ActionListener {
      * EFFECTS: exits the current page and load in the homepage
      */
     private void quitPopUpPanel() {
-        new RestaurantMateGUI();
+        initHome();
     }
 
     /*

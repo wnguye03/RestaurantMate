@@ -47,6 +47,7 @@ public class Restaurent implements Writable {
     }
 
     public void setRestaurantName(String restaurantName) {
+        EventLog.getInstance().logEvent(new Event("The Restaurant is now renamed to " + restaurantName));
         this.restaurantName = restaurantName;
     }
 
@@ -55,6 +56,7 @@ public class Restaurent implements Writable {
     }
 
     public void setCuisine(String cuisine) {
+        EventLog.getInstance().logEvent(new Event("The restaurant's cuisine is now set to " + cuisine));
         this.cuisine = cuisine;
     }
 
@@ -80,6 +82,8 @@ public class Restaurent implements Writable {
         if (currentOrders.contains(order)) {
             return false;
         } else {
+            EventLog.getInstance().logEvent(new Event("added order number " + order.getCustomerID()
+                    + " to restaurant's queue of orders"));
             currentOrders.add(order);
             return true;
         }
@@ -105,6 +109,8 @@ public class Restaurent implements Writable {
     public Boolean removeOrder(int orderID) {
         OrderForRestaurant order = getSingleOrder(orderID);
         if (order != null) {
+            EventLog.getInstance().logEvent(new Event("removed order number " + orderID
+                    + " from restaurant's queue of orders"));
             currentOrders.remove(order);
             return true;
         } else {
@@ -117,6 +123,8 @@ public class Restaurent implements Writable {
      * EFFECTS: removes an order from the restaurant's current list of orders after finish preparation
      */
     public boolean finishOrder(OrderForRestaurant order) {
+        EventLog.getInstance().logEvent(new Event("finished making order number " + order.getCustomerID()
+                + " in the restaurant's queue of orders"));
         currentOrders.remove(order);
         return true;
     }
@@ -127,9 +135,14 @@ public class Restaurent implements Writable {
      */
     public boolean prioritizeOrder(OrderForRestaurant order) {
         if (!currentOrders.contains(order)) {
+            EventLog.getInstance().logEvent(new Event("prioritized order number " + order.getCustomerID()
+                    + " in the restaurant's queue of orders"));
             currentOrders.add(0, order);
             return true;
         } else {
+            EventLog.getInstance().logEvent(new Event("prioritized order number " + order.getCustomerID()
+                    + " in the restaurant's queue of orders"));
+            currentOrders.add(0, order);
             currentOrders.remove(order);
             currentOrders.add(0, order);
             return true;
@@ -139,6 +152,7 @@ public class Restaurent implements Writable {
     // EFFECTS: saves the current restaurant information to a JSON file
     public void handleSaveRestaurant() {
         try {
+            EventLog.getInstance().logEvent(new Event("saved the restaurant to memory"));
             restaurantWriter.open();
             restaurantWriter.write(this);
             restaurantWriter.close();
@@ -151,6 +165,7 @@ public class Restaurent implements Writable {
     // EFFECTS: updates the current restaurant with the saved restaurant's specification and memory
     public Restaurent handleReadRestaurant(Restaurent restaurent) {
         try {
+            EventLog.getInstance().logEvent(new Event("Restaurant from memory loaded into the application"));
             return (Restaurent) restaurantReader.read();
         } catch (IOException e) {
             throw new RuntimeException(e);

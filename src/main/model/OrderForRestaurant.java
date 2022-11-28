@@ -68,6 +68,8 @@ public class OrderForRestaurant implements Writable {
      * EFFECTS: adds an additional food item to the listOfFoodOrdered
      */
     public boolean addItemToOrder(MenuItem newItem) {
+        EventLog.getInstance().logEvent(new Event("added food item " + newItem.getNameOfDish() + " to order number "
+                + this.getCustomerID()));
         this.listOfFoodOrdered.add(newItem);
         return true;
     }
@@ -80,6 +82,8 @@ public class OrderForRestaurant implements Writable {
     public boolean removeItemToOrder(String nameOfItem) {
         for (MenuItem item: listOfFoodOrdered) {
             if (item.getNameOfDish().equals(nameOfItem)) {
+                EventLog.getInstance().logEvent(new Event("removed food item " + nameOfItem + " from order number "
+                        + this.getCustomerID()));
                 listOfFoodOrdered.remove(item);
                 return true;
             }
@@ -96,6 +100,8 @@ public class OrderForRestaurant implements Writable {
         if (customerAllergies.contains(allergy)) {
             return false;
         } else {
+            EventLog.getInstance().logEvent(new Event("added allergy " + allergy + " to order number "
+                    + this.getCustomerID()));
             customerAllergies.add(allergy);
             return true;
         }
@@ -107,6 +113,8 @@ public class OrderForRestaurant implements Writable {
      */
     public boolean removeAllergy(String allergy) {
         if (customerAllergies.contains(allergy)) {
+            EventLog.getInstance().logEvent(new Event("removed allergy " + allergy + " from order number "
+                    + this.getCustomerID()));
             customerAllergies.remove(allergy);
             return true;
         } else {
