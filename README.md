@@ -49,128 +49,128 @@ Restaurant
 
 ## Example of Event Log
 
-Mon Nov 28 05:14:46 PST 2022
-Event log cleared.
-Mon Nov 28 05:14:50 PST 2022
-Restaurant from memory loaded into the application
-Mon Nov 28 05:14:50 PST 2022
-The Restaurant is now renamed to Loaf
-Mon Nov 28 05:14:50 PST 2022
-The restaurant's cuisine is now set to Cafe
-Mon Nov 28 05:15:00 PST 2022
-New menu item chicken has been added
-Mon Nov 28 05:15:00 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:15:08 PST 2022
-New menu item rice has been added
-Mon Nov 28 05:15:08 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:15:12 PST 2022
-Menu Item chicken has been removed
-Mon Nov 28 05:15:12 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:15:17 PST 2022
-Restaurant from memory loaded into the application
-Mon Nov 28 05:15:17 PST 2022
-The Restaurant is now renamed to Loaf
-Mon Nov 28 05:15:17 PST 2022
-The restaurant's cuisine is now set to Cafe
-Mon Nov 28 05:15:17 PST 2022
-New menu item rice has been added
-Mon Nov 28 05:15:18 PST 2022
-Menu has been cleared
-Mon Nov 28 05:15:18 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:15:21 PST 2022
-Restaurant from memory loaded into the application
-Mon Nov 28 05:15:21 PST 2022
-The Restaurant is now renamed to Loaf
-Mon Nov 28 05:15:21 PST 2022
-The restaurant's cuisine is now set to Cafe
-Mon Nov 28 05:15:35 PST 2022
-New menu item fruit has been added
-Mon Nov 28 05:15:35 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:15:39 PST 2022
-Restaurant from memory loaded into the application
-Mon Nov 28 05:15:39 PST 2022
-The Restaurant is now renamed to Loaf
-Mon Nov 28 05:15:39 PST 2022
-The restaurant's cuisine is now set to Cafe
-Mon Nov 28 05:15:39 PST 2022
-New menu item fruit has been added
-Mon Nov 28 05:15:50 PST 2022
-added order number 0 to restaurant's queue of orders
-Mon Nov 28 05:15:50 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:05 PST 2022
-added order number 1 to restaurant's queue of orders
-Mon Nov 28 05:16:05 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:17 PST 2022
-added order number 2 to restaurant's queue of orders
-Mon Nov 28 05:16:17 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:20 PST 2022
-Restaurant from memory loaded into the application
-Mon Nov 28 05:16:20 PST 2022
-The Restaurant is now renamed to Loaf
-Mon Nov 28 05:16:20 PST 2022
-The restaurant's cuisine is now set to Cafe
-Mon Nov 28 05:16:20 PST 2022
-New menu item fruit has been added
-Mon Nov 28 05:16:20 PST 2022
-added order number 3 to restaurant's queue of orders
-Mon Nov 28 05:16:20 PST 2022
-added order number 4 to restaurant's queue of orders
-Mon Nov 28 05:16:20 PST 2022
-added order number 5 to restaurant's queue of orders
-Mon Nov 28 05:16:23 PST 2022
-prioritized order number 5 in the restaurant's queue of orders
-Mon Nov 28 05:16:23 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:26 PST 2022
-removed order number 5 from restaurant's queue of orders
-Mon Nov 28 05:16:26 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:30 PST 2022
-finished making order number 3 in the restaurant's queue of orders
-Mon Nov 28 05:16:30 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:44 PST 2022
-The Restaurant is now renamed to Will's Fruit Stand
-Mon Nov 28 05:16:44 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:47 PST 2022
-The restaurant's cuisine is now set to Fruits
-Mon Nov 28 05:16:47 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:16:58 PST 2022
-added food item fruit to order number 4
-Mon Nov 28 05:16:58 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:17:04 PST 2022
-removed food item fruit from order number 4
-Mon Nov 28 05:17:04 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:17:14 PST 2022
-added allergy dairy to order number 4
-Mon Nov 28 05:17:14 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:17:23 PST 2022
-removed allergy nothing from order number 4
-Mon Nov 28 05:17:23 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:17:27 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:17:32 PST 2022
-finished making order number 4 in the restaurant's queue of orders
-Mon Nov 28 05:17:32 PST 2022
-saved the restaurant to memory
-Mon Nov 28 05:17:36 PST 2022
-finished making order number 5 in the restaurant's queue of orders
-Mon Nov 28 05:17:36 PST 2022
-saved the restaurant to memory
+- Mon Nov 28 05:14:46 PST 2022
+- Event log cleared.
+- Mon Nov 28 05:14:50 PST 2022
+- Restaurant from memory loaded into the application
+- Mon Nov 28 05:14:50 PST 2022
+- The Restaurant is now renamed to Loaf
+- Mon Nov 28 05:14:50 PST 2022
+- The restaurant's cuisine is now set to Cafe
+- Mon Nov 28 05:15:00 PST 2022
+- New menu item chicken has been added
+- Mon Nov 28 05:15:00 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:15:08 PST 2022
+- New menu item rice has been added
+- Mon Nov 28 05:15:08 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:15:12 PST 2022
+- Menu Item chicken has been removed
+- Mon Nov 28 05:15:12 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:15:17 PST 2022
+- Restaurant from memory loaded into the application
+- Mon Nov 28 05:15:17 PST 2022
+- The Restaurant is now renamed to Loaf
+- Mon Nov 28 05:15:17 PST 2022
+- The restaurant's cuisine is now set to Cafe
+- Mon Nov 28 05:15:17 PST 2022
+- New menu item rice has been added
+- Mon Nov 28 05:15:18 PST 2022
+- Menu has been cleared
+- Mon Nov 28 05:15:18 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:15:21 PST 2022
+- Restaurant from memory loaded into the application
+- Mon Nov 28 05:15:21 PST 2022
+- The Restaurant is now renamed to Loaf
+- Mon Nov 28 05:15:21 PST 2022
+- The restaurant's cuisine is now set to Cafe
+- Mon Nov 28 05:15:35 PST 2022
+- New menu item fruit has been added
+- Mon Nov 28 05:15:35 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:15:39 PST 2022
+- Restaurant from memory loaded into the application
+- Mon Nov 28 05:15:39 PST 2022
+- The Restaurant is now renamed to Loaf
+- Mon Nov 28 05:15:39 PST 2022
+- The restaurant's cuisine is now set to Cafe
+- Mon Nov 28 05:15:39 PST 2022
+- New menu item fruit has been added
+- Mon Nov 28 05:15:50 PST 2022
+- added order number 0 to restaurant's queue of orders
+- Mon Nov 28 05:15:50 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:05 PST 2022
+- added order number 1 to restaurant's queue of orders
+- Mon Nov 28 05:16:05 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:17 PST 2022
+- added order number 2 to restaurant's queue of orders
+- Mon Nov 28 05:16:17 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:20 PST 2022
+- Restaurant from memory loaded into the application
+- Mon Nov 28 05:16:20 PST 2022
+- The Restaurant is now renamed to Loaf
+- Mon Nov 28 05:16:20 PST 2022
+- The restaurant's cuisine is now set to Cafe
+- Mon Nov 28 05:16:20 PST 2022
+- New menu item fruit has been added
+- Mon Nov 28 05:16:20 PST 2022
+- added order number 3 to restaurant's queue of orders
+- Mon Nov 28 05:16:20 PST 2022
+- added order number 4 to restaurant's queue of orders
+- Mon Nov 28 05:16:20 PST 2022
+- added order number 5 to restaurant's queue of orders
+- Mon Nov 28 05:16:23 PST 2022
+- prioritized order number 5 in the restaurant's queue of orders
+- Mon Nov 28 05:16:23 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:26 PST 2022
+- removed order number 5 from restaurant's queue of orders
+- Mon Nov 28 05:16:26 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:30 PST 2022
+- finished making order number 3 in the restaurant's queue of orders
+- Mon Nov 28 05:16:30 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:44 PST 2022
+- The Restaurant is now renamed to Will's Fruit Stand
+- Mon Nov 28 05:16:44 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:47 PST 2022
+- The restaurant's cuisine is now set to Fruits
+- Mon Nov 28 05:16:47 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:16:58 PST 2022
+- added food item fruit to order number 4
+- Mon Nov 28 05:16:58 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:17:04 PST 2022
+- removed food item fruit from order number 4
+- Mon Nov 28 05:17:04 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:17:14 PST 2022
+- added allergy dairy to order number 4
+- Mon Nov 28 05:17:14 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:17:23 PST 2022
+- removed allergy nothing from order number 4
+- Mon Nov 28 05:17:23 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:17:27 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:17:32 PST 2022
+- finished making order number 4 in the restaurant's queue of orders
+- Mon Nov 28 05:17:32 PST 2022
+- saved the restaurant to memory
+- Mon Nov 28 05:17:36 PST 2022
+- finished making order number 5 in the restaurant's queue of orders
+- Mon Nov 28 05:17:36 PST 2022
+- saved the restaurant to memory
 
 # Phase 4: Task 3
 ## Reflection
@@ -181,3 +181,5 @@ saved the restaurant to memory
 3. Refactoring OrderForRestaurant
    - Currently, my OrderForRestaurant class has an association with my menu item class as it uses menu items as the input for its list of food ordered, however, this creates problems as menu items that aren't in the restaurant's menu can theoretically be added to an order which could create problems for my program. Therefore, given more time I would make OrderForRestaurant have an association with MenuForRestaurant class or with the Restaurant class and utilize the restaurant's menu to pick the menu items that can be inputed, thus, eliminating the problem of possibly choosing a menu item that does not exist. 
 
+# UML Diagram
+![](../../../RestaurantMate_UML_Diagram.jpg)
