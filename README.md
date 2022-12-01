@@ -47,6 +47,7 @@ Restaurant
 - You can save the restaurant by clicking the save button at the top of the screen
 - You can load the restaurant by clicking the load button at the top of the screen
 
+## Phase 4: Task 2
 ## Example of Event Log
 
 - Mon Nov 28 05:14:46 PST 2022
