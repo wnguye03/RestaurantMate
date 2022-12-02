@@ -183,4 +183,5 @@ Restaurant
    - Currently, my OrderForRestaurant class has an association with my menu item class as it uses menu items as the input for its list of food ordered, however, this creates problems as menu items that aren't in the restaurant's menu can theoretically be added to an order which could create problems for my program. Therefore, given more time I would make OrderForRestaurant have an association with MenuForRestaurant class or with the Restaurant class and utilize the restaurant's menu to pick the menu items that can be inputed, thus, eliminating the problem of possibly choosing a menu item that does not exist. 
 
 # UML Diagram
-![RestaurantMate_UML_Diagram](https://media.github.students.cs.ubc.ca/user/19552/files/d90628d8-6629-4fa6-90be-d0909362a6e9)
+<img width="584" alt="Screen Shot 2022-12-02 at 9 24 37 AM" src="https://media.github.students.cs.ubc.ca/user/19552/files/e3a703eb-5eb6-400a-aa6d-419b259c1617">
+
