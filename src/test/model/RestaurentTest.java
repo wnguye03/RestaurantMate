@@ -40,8 +40,6 @@ class RestaurentTest {
         jeff = new OrderForRestaurant("Jeff", foodOrdered, allergies);
         mike = new OrderForRestaurant("Mike", foodOrdered, allergies);
         sam = new OrderForRestaurant("Sam", foodOrdered, allergies);
-
-
     }
 
     @Test
@@ -70,16 +68,16 @@ class RestaurentTest {
     void addOrderNotAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 24 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 24 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy [Dairy]" +
+                " time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
     }
 
     @Test
     void addOrderAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 30 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 30 name of customer: Jeff Food Ordered [Fried Chicken, Burger] " +
+                "allergy [Dairy] time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(false, bobFoodStand.addOrder(jeff));
     }
@@ -88,8 +86,8 @@ class RestaurentTest {
     void getSingleOrderWithOrderInQueueTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 15 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 15 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy [Dairy]" +
+                " time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
     }
 
     @Test
@@ -103,8 +101,8 @@ class RestaurentTest {
     void removeOrderAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 6 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 6 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy [Dairy] " +
+                "time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(true, bobFoodStand.removeOrder(6));
         assertEquals(0, bobFoodStand.getCurrentOrders().size());
@@ -114,21 +112,21 @@ class RestaurentTest {
     void removeOrderNotAlreadyInCurrentOrdersTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 27 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 27 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy [Dairy]" +
+                " time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(false, bobFoodStand.removeOrder(2));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 27 name of customer: Jeff allergy [Fried Chicken, Burger] allergy [Dairy] "
-                + "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 27 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy [Dairy]" +
+                " time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
     }
 
     @Test
     void finishOrderTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 3 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 3 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy " +
+                "[Dairy] time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
         assertTrue(bobFoodStand.finishOrder(jeff));
         assertEquals(0, bobFoodStand.getCurrentOrders().size());
@@ -138,22 +136,22 @@ class RestaurentTest {
     void prioritizeOrderTest() {
         assertEquals(true, bobFoodStand.addOrder(jeff));
         assertEquals(1, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 12 name of customer: Jeff allergy [Fried Chicken, Burger] " +
-                "allergy [Dairy] time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 12 name of customer: Jeff Food Ordered [Fried Chicken, Burger] allergy " +
+                "[Dairy] time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
         assertEquals(true, bobFoodStand.addOrder(mike));
         assertEquals(2, bobFoodStand.getCurrentOrders().size());
-        assertEquals("order ID: 13 name of customer: Mike allergy [Fried Chicken, Burger] allergy [Dairy] "
-                + "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(1));
+        assertEquals("order ID: 13 name of customer: Mike Food Ordered [Fried Chicken, Burger] allergy" +
+                " [Dairy] time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(1));
 
         assertTrue(bobFoodStand.prioritizeOrder(mike));
 
-        assertEquals("order ID: 13 name of customer: Mike allergy [Fried Chicken, Burger] allergy [Dairy] "
-                + "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 13 name of customer: Mike Food Ordered [Fried Chicken, Burger] allergy " +
+                "[Dairy] time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
         assertTrue(bobFoodStand.prioritizeOrder(sam));
-        assertEquals("order ID: 14 name of customer: Sam allergy [Fried Chicken, Burger] allergy [Dairy] " +
-                "time to make 25 price: 60", bobFoodStand.getCurrentOrders().get(0));
+        assertEquals("order ID: 14 name of customer: Sam Food Ordered [Fried Chicken, Burger] allergy " +
+                "[Dairy] time to make 25 price: 60\n", bobFoodStand.getCurrentOrders().get(0));
 
     }
 

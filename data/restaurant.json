@@ -1,1 +1,1 @@
-{"restaurantName":"Will's Fruit Stand","cuisine":"Fruits","orders":[],"menu":[{"name":"fruit","avaliability":true,"allergy":"none","time to make":2,"id":5,"priceOfItem":10}]}
+{"restaurantName":"Bob's Food Stand","cuisine":"American","orders":[],"menu":[{"name":"Fried Chicken","avaliability":true,"allergy":"Peanut","time to make":10,"id":62,"priceOfItem":40},{"name":"Burger","avaliability":true,"allergy":"Dairy","time to make":15,"id":63,"priceOfItem":20}]}

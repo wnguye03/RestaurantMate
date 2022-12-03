@@ -83,7 +83,8 @@ class MenuForRestaurantTest {
         assertEquals(1, menu.menuSize());
         assertEquals(friedChicken, menu.getFoodItem("Fried Chicken"));
 
-        assertEquals("Fried Chicken 40 ", menu.getAllMenuItems());
+        assertEquals("Name Fried Chicken Price 40 \n" +
+                "\n", menu.getAllMenuItems());
     }
 
     @Test
